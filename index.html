@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">tailwind.config = {
+      darkMode: "class",
+      theme: {
+          extend: {
+              colors: {
+                  "primary": "#6B8E23",
+                  "warm-accent": "#FFD8B1",
+                  "cool-accent": "#C5B4E3",
+                  "sage-gray": "#4B5D4B",
+                  "background-light": "#FFF8F0",
+                  "background-dark": "#1a1c1a",
+              },
+              fontFamily: {
+                  "display": ["Inter", "sans-serif"],
+                  "serif": ["Playfair Display", "serif"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+      },
+      }
+    </script>
+    <title>RMS Architectural Portfolio</title>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display text-sage-gray transition-colors duration-300">
+    <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+    <!-- Navigation START -->
+    <header class="fixed top-0 z-50 w-full border-b border-primary/20 bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80 px-6 lg:px-20 py-6">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo / Name -->
+        <div class="flex items-center gap-2 group cursor-pointer">
+          <span class="material-symbols-outlined text-primary text-3xl">
+          architecture
+          </span>
+          <h1 class="text-xl font-serif font-bold tracking-tight text-sage-gray">
+            Rona Marie S. Silva
+          </h1>
+        </div>
+        <!-- Contact Button -->
+        <button
+          class="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-primary/90 transition-all shadow-md"
+          onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+          >
+        Contact Me
+        </button>
+      </div>
+    </header>
+    <main class="flex-grow pt-20">
+      <!-- Navigation END -->
+      <!-- Hero Section -->
+      <section class="relative min-h-[60vh] flex items-center justify-center px-6 lg:px-20 bg-background-light pt-10 pb-12">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+          <!-- Profile Image -->
+          <div class="w-48 h-48 md:w-64 md:h-64 mb-12 rounded-full flex items-center justify-center border-2 overflow-hidden shadow-sm bg-cool-accent/10 border-cool-accent/20">
+            <img
+              src="assets/main.JPG"
+              alt="Rona Marie S. Silva - Professional Portrait"
+              class="w-full h-full object-cover"
+              />
+          </div>
+          <!-- Text Content -->
+          <div class="max-w-2xl px-4">
+            <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-6 text-sage-gray">
+              I'm Rona, Oy O O O O Oy Oy O O O O Oyyy. I love that song. I think it's OMFG's Hello or something.
+            </h2>
+            <div class="w-12 h-1 bg-primary mx-auto rounded-full"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Hero Section END -->
+      <!-- Projects Gallery -->
+      <section class="px-6 lg:px-20 max-w-7xl mx-auto py-24" id="gallery">
+        <div class="mb-16 text-center">
+          <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-4 text-sage-gray">My Architecural</h3>
+          <h2 class="text-4xl font-serif font-bold text-sage-gray">Process &amp; Inspiration</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
+            <img alt="Gallery Image 1" class="w-full h-full object-cover" src="assets/1.JPG"/>
+          </div>
+          <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
+            <img alt="Gallery Image 2" class="w-full h-full object-cover" src="assets/2.JPG"/>
+          </div>
+          <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
+            <img alt="Gallery Image 3" class="w-full h-full object-cover" src="assets/3.JPG"/>
+          </div>
+          <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
+            <img alt="Gallery Image 4" class="w-full h-full object-cover" src="assets/4.JPG"/>
+          </div>
+          <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
+            <img alt="Gallery Image 5" class="w-full h-full object-cover" src="assets/5.JPG"/>
+          </div>
+          <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
+            <img alt="Gallery Image 6" class="w-full h-full object-cover" src="assets/6.JPG"/>
+          </div>
+        </div>
+      </section>
+      <section class="px-6 lg:px-20 max-w-7xl mx-auto py-32" id="projects">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-24">
+            <div class="max-w-xl">
+              <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-4 text-sage-gray">Projects I've Worked On</h3>
+              <h2 class="text-4xl font-serif font-bold text-sage-gray">Iconic structures that redefine modern living.</h2>
+            </div>
+            <p class="max-w-xs italic font-serif text-sage-gray/80">"Architecture should speak of its time and place, but yearn for timelessness."</p>
+          </div>
+          <div class="space-y-32">
+            <!-- Project 1 -->
+            <div class="group grid lg:grid-cols-2 gap-12 items-center">
+              <div class="order-1 lg:order-1 overflow-hidden rounded-2xl aspect-[16/10]">
+                <img alt="Terracotta House" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/luneta_park_minecraft.jpeg"/>
+              </div>
+              <div class="order-2 lg:order-2">
+                <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-4 text-sage-gray">Recreational • Coordinates : X : 1105, Y : -2067</h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 text-sage-gray">Minecraft Luneta Park</h3>
+                <p class="text-lg leading-relaxed mb-8 text-sage-gray/80">
+                  Luneta Park is a recreational landscape project that I designed to create an accessible and inviting public space for leisure, movement, and community interaction. 
+                  The design integrates organized pedestrian circulation, landscaped green spaces, and shaded seating areas to establish a balanced and functional environment for visitors. 
+                </p>
+                <div class="w-12 h-1 bg-primary rounded-full"></div>
+              </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="group grid lg:grid-cols-2 gap-12 items-center">
+              <div class="order-1 lg:order-2 overflow-hidden rounded-2xl aspect-[16/10]">
+                <img alt="The Sage Pavilion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/insane-asylum.jpg"/>
+              </div>
+              <div class="order-2 lg:order-1 lg:text-right flex flex-col lg:items-end">
+                <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-4 text-sage-gray">Institutional • West Virginia, USA</h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 text-sage-gray">Trans‑Allegheny Lunatic Asylum of 1864</h3>
+                <p class="text-lg leading-relaxed mb-8 text-sage-gray/80">
+                  I designed the Trans‑Allegheny Lunatic Asylum of 1864 to combine structured, therapeutic spaces with architectural grandeur. <br>Its radial wings and expansive corridors promote light, ventilation, and order, creating a sense of calm while subtly reflecting the imposing, somber reality of confinement.                
+                </p>
+                <div class="w-12 h-1 bg-primary rounded-full"></div>
+              </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="group grid lg:grid-cols-2 gap-12 items-center">
+              <div class="order-1 lg:order-1 overflow-hidden rounded-2xl aspect-[16/10]">
+                <img alt="Desert Monolith" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/anti-homeless-bench.jpg"/>
+              </div>
+              <div class="order-2 lg:order-2">
+                <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-4 text-sage-gray">Urban Furniture • Cebu, Philippines</h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 text-sage-gray">Triple Arm Anti-Homeless Bench</h3>
+                <p class="text-lg leading-relaxed mb-8 text-sage-gray/80">
+                  I designed the Vigilant Urban Bench to champion daytime relaxation while preventing nighttime lounging. The strategically placed central armrest ensures that no one can stretch out for a nap, keeping the bench upright, tidy, and socially “responsible.”                </p>
+                <div class="w-12 h-1 bg-primary rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <!-- Contact Section -->
+      <section class="px-6 lg:px-20 max-w-7xl mx-auto py-40" id="contact">
+        <div class="grid lg:grid-cols-2 gap-20">
+          <div>
+            <h2 class="text-4xl font-serif font-bold mb-8 text-sage-gray">DO NOT  <span class="text-primary italic">EVER</span> CONTACT ME NEVER EVER.</h2>
+            <div class="space-y-8">
+              <!-- Contact Info -->
+              <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">mail</span>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-widest font-bold text-sage-gray/60">Email</p>
+                  <p class="text-lg text-sage-gray">arki.ronasilva@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">location_on</span>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-widest font-bold text-sage-gray/60">Location</p>
+                  <p class="text-lg text-sage-gray">Cebu (Casa Chamoi), Philippines</p>
+                </div>
+              </div>
+              <!-- Social Links -->
+              <div class="mt-16">
+                <p class="font-bold mb-6 uppercase text-xs tracking-widest text-sage-gray/60">Do NOT follow me on these socials.</p>
+                <div class="flex gap-4">
+                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-warm-accent/30 text-sage-gray hover:bg-primary hover:text-white" href="#">
+                  <span class="material-symbols-outlined">photo_camera</span>
+                  </a>
+                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-warm-accent/30 text-sage-gray hover:bg-primary hover:text-white" href="#">
+                  <span class="material-symbols-outlined">work</span>
+                  </a>
+                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-warm-accent/30 text-sage-gray hover:bg-primary hover:text-white" href="#">
+                  <span class="material-symbols-outlined">share</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <form class="bg-white/50 backdrop-blur-sm p-10 rounded-2xl shadow-sm space-y-6 border border-primary/10">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1">
+                  <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">First Name</label>
+                  <input class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" type="text" value="JC (Yes, the chad from the same house)"/>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Last Name</label>
+                  <input class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" type="text" value="Gort"/>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Email Address</label>
+                <input class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" type="email" value="email@email.orgtest"/>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Project Type</label>
+                <select class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray">
+                  <option>Biohazard Weaponry</option>
+                  <option>Interior Design</option>
+                   
+                  <option>Residential</option>
+                  <option>Goofy</option>
+                  <option>Commercial</option>
+                  <option>Cultural</option>
+                  <option>Cat Babysitting Service</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Your Vision</label>
+                <textarea class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" rows="4" >I am a customer and I believe the doctor said my vision is 13/20. Will this information be of use to you, an architect, in designing a building that i would like? (goofy customer be like)</textarea>
+              </div>
+              <button class="w-full bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg" type="submit">Send to my trash folder</button>
+            </form>
+          </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-primary/10 px-6 lg:px-20 text-center">
+    </footer>
+    </div>
+  </body>
+</html>
