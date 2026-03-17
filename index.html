@@ -43,6 +43,61 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
       }
+
+      /* Profile wreath background (swaps with light/dark mode) */
+      .profile-wreath {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        --wreath-pad: clamp(39px, 6.6vw, 58px);
+      }
+      .profile-wreath::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: calc(100% + (2 * var(--wreath-pad)));
+        height: calc(100% + (2 * var(--wreath-pad)));
+        border-radius: 9999px;
+        pointer-events: none;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        background: url("assets/t-light-new.png") 50% 50% / contain no-repeat;
+      }
+      .dark .profile-wreath::before {
+        background-image: url("assets/t-dark-new.png");
+      }
+
+      /* Fern / floral section separator */
+      .section-divider {
+        height: 28px;
+        max-width: 64rem;
+        margin: 3.5rem auto;
+        opacity: 0.95;
+        background: linear-gradient(
+          90deg,
+          rgb(var(--brand) / 0.0),
+          rgb(var(--brand) / 0.45),
+          rgb(var(--accent) / 0.35),
+          rgb(var(--brand) / 0.45),
+          rgb(var(--brand) / 0.0)
+        );
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27180%27%20height%3D%2728%27%20viewBox%3D%270%200%20180%2028%27%3E%3Cg%20fill%3D%27%23000%27%20stroke%3D%27%23000%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M0%2014c16-10%2032-10%2048%200%2016%2010%2032%2010%2048%200%2016-10%2032-10%2048%200%27%20fill%3D%27none%27/%3E%3Cpath%20d%3D%27M24%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M24%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M68%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M68%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M112%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M112%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M156%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M156%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cg%20stroke%3D%27none%27%3E%3Ccircle%20cx%3D%2746%27%20cy%3D%2714%27%20r%3D%271.2%27/%3E%3Ccircle%20cx%3D%2746%27%20cy%3D%2711%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2748.6%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2747.6%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2744.4%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2743.4%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2790%27%20cy%3D%2714%27%20r%3D%271.2%27/%3E%3Ccircle%20cx%3D%2790%27%20cy%3D%2711%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2792.6%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2791.6%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2788.4%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2787.4%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27134%27%20cy%3D%2714%27%20r%3D%271.2%27/%3E%3Ccircle%20cx%3D%27134%27%20cy%3D%2711%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27136.6%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27135.6%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27132.4%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27131.4%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27180%27%20height%3D%2728%27%20viewBox%3D%270%200%20180%2028%27%3E%3Cg%20fill%3D%27%23000%27%20stroke%3D%27%23000%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M0%2014c16-10%2032-10%2048%200%2016%2010%2032%2010%2048%200%2016-10%2032-10%2048%200%27%20fill%3D%27none%27/%3E%3Cpath%20d%3D%27M24%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M24%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M68%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M68%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M112%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M112%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M156%2014c4-6%209-9%2014-10-1%205-4%2010-10%2014%27%20stroke%3D%27none%27/%3E%3Cpath%20d%3D%27M156%2014c-4%206-9%209-14%2010%201-5%204-10%2010-14%27%20stroke%3D%27none%27/%3E%3Cg%20stroke%3D%27none%27%3E%3Ccircle%20cx%3D%2746%27%20cy%3D%2714%27%20r%3D%271.2%27/%3E%3Ccircle%20cx%3D%2746%27%20cy%3D%2711%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2748.6%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2747.6%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2744.4%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2743.4%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2790%27%20cy%3D%2714%27%20r%3D%271.2%27/%3E%3Ccircle%20cx%3D%2790%27%20cy%3D%2711%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2792.6%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2791.6%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2788.4%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%2787.4%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27134%27%20cy%3D%2714%27%20r%3D%271.2%27/%3E%3Ccircle%20cx%3D%27134%27%20cy%3D%2711%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27136.6%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27135.6%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27132.4%27%20cy%3D%2716.2%27%20r%3D%271.1%27/%3E%3Ccircle%20cx%3D%27131.4%27%20cy%3D%2713%27%20r%3D%271.1%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        -webkit-mask-repeat: repeat-x;
+        mask-repeat: repeat-x;
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-size: 180px 28px;
+        mask-size: 180px 28px;
+      }
+
+      @media (min-width: 768px) {
+        .section-divider {
+          margin: 4.5rem auto;
+        }
+      }
     </style>
     <script id="tailwind-config">tailwind.config = {
       darkMode: "class",
@@ -86,8 +141,8 @@
     
         <!-- Logo / Name -->
         <div class="flex items-center gap-2 group cursor-pointer">
-          <span class="material-symbols-outlined text-brand text-3xl">architecture</span>
-          <h1 class="text-xl font-serif font-bold tracking-tight text-ink">
+          <span class="material-symbols-outlined text-brand text-[34px] leading-none">local_florist</span>
+          <h1 class="text-[22px] sm:text-2xl font-serif font-bold tracking-tight text-ink">
             Rona Silva
           </h1>
         </div>
@@ -140,15 +195,17 @@
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-canvas/85 via-canvas/65 to-transparent dark:from-canvas-dark/70 dark:via-canvas-dark/45"></div>
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
           <!-- Profile Image -->
-          <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 mb-10 md:mb-12 rounded-full flex items-center justify-center border-2 overflow-hidden shadow-sm bg-accent/10 border-accent/20 dark:bg-canvas/5 dark:border-accent/30 transition-colors duration-300">
-            <img
-              id="profile-photo"
-              src="assets/profile-light.jpg"
-              data-light-src="assets/profile-light.jpg"
-              data-dark-src="assets/profile-dark.jpg"
-              alt="Rona Marie S. Silva - Professional Portrait"
-              class="w-full h-full object-cover"
-              />
+          <div class="profile-wreath mb-10 md:mb-12">
+            <div class="relative z-10 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center overflow-hidden bg-accent/10 shadow-sm border border-accent/20 ring-2 ring-brand/20 ring-offset-4 ring-offset-canvas dark:bg-canvas/5 dark:border-accent/30 dark:ring-brand/30 dark:ring-offset-canvas-dark transition-colors duration-300">
+              <img
+                id="profile-photo"
+                src="assets/profile-light.jpg"
+                data-light-src="assets/profile-light.jpg"
+                data-dark-src="assets/profile-dark.jpg"
+                alt="Rona Marie S. Silva - Professional Portrait"
+                class="w-full h-full object-cover"
+                />
+            </div>
           </div>
           <!-- Text Content -->
           <div class="max-w-2xl px-4">
@@ -162,6 +219,7 @@
         </div>
       </section>
       <!-- Hero Section END -->
+      <div class="section-divider" aria-hidden="true"></div>
       <!-- Projects Gallery -->
       <section class="px-6 lg:px-20 max-w-7xl mx-auto py-24" id="gallery">
         <div class="mb-16 text-center">
@@ -189,6 +247,7 @@
           </div>
         </div>
       </section>
+      <div class="section-divider" aria-hidden="true"></div>
       <section class="px-6 lg:px-20 max-w-7xl mx-auto py-20" id="projects">
         <div class="max-w-7xl mx-auto">
           <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-24">
@@ -201,6 +260,7 @@
           <div id="projects-list" class="space-y-32"></div>
         </div>
       </section>
+      <div class="section-divider" aria-hidden="true"></div>
       <!-- About Section -->
       <!-- Contact Section -->
       <section class="px-6 lg:px-20 max-w-7xl mx-auto py-4" id="contact">

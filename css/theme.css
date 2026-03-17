@@ -1,0 +1,18 @@
+:root {
+  /* Light palette */
+  --brand: 109 105 67; /* #6D6943 */
+  --ink: 66 1 15; /* #42010F */
+  --accent: 207 189 140; /* #CFBD8C */
+  --canvas: 244 243 238; /* #F4F3EE */
+  --canvas-dark: 41 46 22; /* #292E16 */
+}
+
+.dark {
+  /* Softer sunset dark (lifted, less heavy) */
+  --brand: 214 140 82; /* warm sunset orange, slightly muted */
+  --ink: 250 246 240; /* very soft warm white */
+  --accent: 186 140 200; /* dusty lavender (subtle, not neon) */
+  --canvas: 58 36 46; /* lifted plum-brown */
+  --canvas-dark: 44 26 34; /* slightly deeper layer */
+}
+
