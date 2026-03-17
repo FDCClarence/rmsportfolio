@@ -69,6 +69,38 @@
         background-image: url("assets/t-dark-new.png");
       }
 
+      /* Chihuahua jumpscare overlay */
+      .jumpscare {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        background: rgb(0 0 0 / 0.92);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 120ms ease;
+      }
+      .jumpscare.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .jumpscare img {
+        width: min(92vw, 980px);
+        max-height: 92vh;
+        object-fit: contain;
+        transform: scale(0.35);
+        filter: contrast(1.15) saturate(1.2);
+        will-change: transform;
+      }
+      .jumpscare.open img {
+        animation: jumpscare-pop 80ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+      }
+      @keyframes jumpscare-pop {
+        from { transform: scale(0.35); }
+        to { transform: scale(1); }
+      }
+
       /* Fern / floral section separator */
       .section-divider {
         height: 28px;
@@ -343,7 +375,22 @@
     </main>
     <!-- Footer -->
     <footer class="py-12 border-t border-brand/10 px-6 lg:px-20 text-center">
+      <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+        <button
+          id="gort-button"
+          type="button"
+          class="inline-flex items-center gap-2 rounded-full bg-brand text-white px-6 py-3 font-bold shadow-md transition-all duration-200 hover:bg-brand/90 hover:shadow-lg"
+        >
+        😊 Gort Button 😊
+        </button>
+      </div>
     </footer>
+
+    <!-- Chihuahua jumpscare overlay -->
+    <div id="jumpscare" class="jumpscare" aria-hidden="true">
+      <img src="assets/chihuahua.png" alt="Scary chihuahua jumpscare"/>
+    </div>
+    <audio id="jumpscare-audio" src="assets/tyler1_barking_like_a_dog.mp3" preload="auto"></audio>
     </div>
     <script>
       (function () {
@@ -382,6 +429,42 @@
 
         syncIcon();
         syncProfilePhoto();
+      })();
+    </script>
+    <script>
+      (function () {
+        const gortBtn = document.getElementById("gort-button");
+        const overlay = document.getElementById("jumpscare");
+        const audio = document.getElementById("jumpscare-audio");
+        if (!gortBtn || !overlay) return;
+
+        function open() {
+          overlay.classList.add("open");
+          overlay.setAttribute("aria-hidden", "false");
+          if (audio) {
+            try {
+              audio.currentTime = 0;
+              const p = audio.play();
+              if (p && typeof p.catch === "function") p.catch(() => {});
+            } catch {}
+          }
+        }
+        function close() {
+          overlay.classList.remove("open");
+          overlay.setAttribute("aria-hidden", "true");
+          if (audio) {
+            try {
+              audio.pause();
+              audio.currentTime = 0;
+            } catch {}
+          }
+        }
+
+        gortBtn.addEventListener("click", open);
+        overlay.addEventListener("click", close);
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") close();
+        });
       })();
     </script>
     <script>
