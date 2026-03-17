@@ -9,17 +9,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     
     
+    <style>
+      :root {
+        /* Light palette */
+        --brand: 109 105 67;      /* #6D6943 */
+        --ink: 66 1 15;           /* #42010F */
+        --accent: 207 189 140;    /* #CFBD8C */
+        --canvas: 244 243 238;    /* #F4F3EE */
+        --canvas-dark: 41 46 22;  /* #292E16 (used as deep surface in light mode too) */
+      }
+
+      .dark {
+        /* Softer sunset dark (lifted, less heavy) */
+        --brand: 214 140 82;      /* warm sunset orange, slightly muted */
+        --ink: 250 246 240;       /* very soft warm white */
+        --accent: 186 140 200;    /* dusty lavender (subtle, not neon) */
+        --canvas: 58 36 46;       /* lifted plum-brown (key fix) */
+        --canvas-dark: 44 26 34;  /* slightly deeper layer, but not black */
+      }
+    </style>
     <script id="tailwind-config">tailwind.config = {
       darkMode: "class",
       theme: {
           extend: {
             colors: {
-                "primary": "#6D6943",        // olive-khaki → buttons, links, active nav
-                "warm-accent": "#42010F",    // deep burgundy → CTAs, bold highlights, hover states
-                "cool-accent": "#CFBD8C",    // parchment gold → secondary buttons, dividers, tags
-                "sage-gray": "#42010F",      // warm dark brown → all body text & headings
-                "background-light": "#F4F3EE", // warm off-white → page background
-                "background-dark": "#292E16",  // deep forest green → dark mode bg
+                "brand": "rgb(var(--brand) / <alpha-value>)",
+                "ink": "rgb(var(--ink) / <alpha-value>)",
+                "accent": "rgb(var(--accent) / <alpha-value>)",
+                "canvas": "rgb(var(--canvas) / <alpha-value>)",
+                "canvas-dark": "rgb(var(--canvas-dark) / <alpha-value>)",
             },
 
               fontFamily: {
@@ -31,59 +49,85 @@
       },
       }
     </script>
+    <script>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        const shouldUseDark = stored ? stored === "dark" : prefersDark;
+        document.documentElement.classList.toggle("dark", shouldUseDark);
+      })();
+    </script>
     <title>RMS Architectural Portfolio</title>
   </head>
-  <body class="bg-background-light dark:bg-background-dark font-display text-sage-gray transition-colors duration-300">
+  <body class="bg-canvas dark:bg-canvas-dark font-display text-ink transition-colors duration-300">
     <div class="relative flex min-h-screen flex-col overflow-x-hidden">
     <!-- Navigation START -->
-    <header class="fixed top-0 z-50 w-full border-b border-primary/20 bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80 px-6 lg:px-20 py-6">
+    <header class="fixed top-0 z-50 w-full border-b border-brand/20 bg-canvas/80 backdrop-blur-md dark:bg-canvas-dark/80 px-6 lg:px-20 py-6 transition-colors duration-300">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
     
         <!-- Logo / Name -->
         <div class="flex items-center gap-2 group cursor-pointer">
-          <span class="material-symbols-outlined text-primary text-3xl">architecture</span>
-          <h1 class="text-xl font-serif font-bold tracking-tight text-sage-gray">
+          <span class="material-symbols-outlined text-brand text-3xl">architecture</span>
+          <h1 class="text-xl font-serif font-bold tracking-tight text-ink">
             Rona Marie S. Silva
           </h1>
         </div>
     
         <!-- Nav Links -->
         <!-- <nav class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Original Palette</a>
-          <a href="sample2.html" class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Dried Herb</a>
-          <a href="sample3.html"   class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Wax Seal</a>
-          <a href="sample4.html"   class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Dusty Linen</a>
+          <a href="index.html" class="nav-link text-sm font-medium text-ink/55 hover:text-ink transition-colors duration-200">Original Palette</a>
+          <a href="sample2.html" class="nav-link text-sm font-medium text-ink/55 hover:text-ink transition-colors duration-200">Dried Herb</a>
+          <a href="sample3.html"   class="nav-link text-sm font-medium text-ink/55 hover:text-ink transition-colors duration-200">Wax Seal</a>
+          <a href="sample4.html"   class="nav-link text-sm font-medium text-ink/55 hover:text-ink transition-colors duration-200">Dusty Linen</a>
         </nav> -->
     
-        <!-- Contact Button -->
-        <button
-          class="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-primary/90 transition-all shadow-md"
-          onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
-        >
-          Contact Me
-        </button>
+        <div class="flex items-center gap-3">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-brand/25 bg-canvas/60 text-ink hover:bg-canvas/90 transition-all shadow-sm dark:bg-canvas-dark/50 duration-300"
+            aria-label="Toggle dark mode"
+            title="Toggle theme"
+          >
+            <span id="theme-toggle-icon" class="material-symbols-outlined text-[22px] leading-none">dark_mode</span>
+          </button>
+
+          <!-- Contact Button -->
+          <button
+            class="bg-brand text-white px-8 py-3 rounded-full font-bold hover:bg-brand/90 transition-all shadow-md duration-300"
+            onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+          >
+            Contact Me
+          </button>
+        </div>
     
       </div>
     </header>
     <main class="flex-grow pt-20">
       <!-- Navigation END -->
       <!-- Hero Section -->
-      <section class="relative min-h-[60vh] flex items-center justify-center px-6 lg:px-20 bg-background-light pt-10 pb-12">
+      <section class="relative min-h-[60vh] flex items-center justify-center px-6 lg:px-20 bg-canvas dark:bg-canvas-dark transition-colors duration-300 pt-10 pb-12">
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
           <!-- Profile Image -->
-          <div class="w-48 h-48 md:w-64 md:h-64 mb-12 rounded-full flex items-center justify-center border-2 overflow-hidden shadow-sm bg-cool-accent/10 border-cool-accent/20">
+          <div class="w-48 h-48 md:w-64 md:h-64 mb-12 rounded-full flex items-center justify-center border-2 overflow-hidden shadow-sm bg-accent/10 border-accent/20 dark:bg-canvas/5 dark:border-accent/30 transition-colors duration-300">
             <img
-              src="assets/profile2.jpg"
+              id="profile-photo"
+              src="assets/profile-light.jpg"
+              data-light-src="assets/profile-light.jpg"
+              data-dark-src="assets/profile-dark.jpg"
               alt="Rona Marie S. Silva - Professional Portrait"
               class="w-full h-full object-cover"
               />
           </div>
           <!-- Text Content -->
           <div class="max-w-2xl px-4">
-            <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-6 text-sage-gray">
+            <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-6 text-ink">
               N-NO!! LET ME BE MYSELF!!! STOP JUDGING ME… AH…IM TURNING INTO… MY TRUE FORM 🐺🐺🐺🐺😈😈😈⛓️⛓️⛓️🖤🖤🖤🔪🔪🔪🔪🔪 AWOOOOOOOOOOOHHHHH!!!!!!
             </h2>
-            <div class="w-12 h-1 bg-primary mx-auto rounded-full"></div>
+            <div class="w-12 h-1 bg-brand mx-auto rounded-full"></div>
           </div>
         </div>
       </section>
@@ -91,8 +135,8 @@
       <!-- Projects Gallery -->
       <section class="px-6 lg:px-20 max-w-7xl mx-auto py-24" id="gallery">
         <div class="mb-16 text-center">
-          <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-4 text-sage-gray">My Architectural</h3>
-          <h2 class="text-4xl font-serif font-bold text-sage-gray">Process &amp; Inspiration</h2>
+          <h3 class="text-brand font-bold uppercase tracking-widest text-sm mb-4 text-ink">My Architectural</h3>
+          <h2 class="text-4xl font-serif font-bold text-ink">Process &amp; Inspiration</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
           <div class="aspect-square overflow-hidden rounded-xl bg-slate-100">
@@ -119,10 +163,10 @@
         <div class="max-w-7xl mx-auto">
           <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-24">
             <div class="max-w-xl">
-              <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-4 text-sage-gray">Projects I've Worked On</h3>
-              <h2 class="text-4xl font-serif font-bold text-sage-gray">Iconic structures that redefine modern living.</h2>
+              <h3 class="text-brand font-bold uppercase tracking-widest text-sm mb-4 text-ink">Projects I've Worked On</h3>
+              <h2 class="text-4xl font-serif font-bold text-ink">Iconic structures that redefine modern living.</h2>
             </div>
-            <p class="max-w-xs italic font-serif text-sage-gray/80">"Architecture should speak of its time and place, but yearn for timelessness."</p>
+            <p class="max-w-xs italic font-serif text-ink/80">"Architecture should speak of its time and place, but yearn for timelessness."</p>
           </div>
           <div class="space-y-32">
             <!-- Project 1 -->
@@ -131,13 +175,13 @@
                 <img alt="Terracotta House" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/luneta_park_minecraft.jpeg"/>
               </div>
               <div class="order-2 lg:order-2">
-                <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-4 text-sage-gray">Recreational • Coordinates : X : 1105, Y : -2067</h4>
-                <h3 class="text-3xl font-serif font-bold mb-6 text-sage-gray">Minecraft Luneta Park</h3>
-                <p class="text-lg leading-relaxed mb-8 text-sage-gray/80">
+                <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">Recreational • Coordinates : X : 1105, Y : -2067</h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 text-ink">Minecraft Luneta Park</h3>
+                <p class="text-lg leading-relaxed mb-8 text-ink/80">
                   Luneta Park is a recreational landscape project that I designed to create an accessible and inviting public space for leisure, movement, and community interaction. 
                   The design integrates organized pedestrian circulation, landscaped green spaces, and shaded seating areas to establish a balanced and functional environment for visitors. 
                 </p>
-                <div class="w-12 h-1 bg-primary rounded-full"></div>
+                <div class="w-12 h-1 bg-brand rounded-full"></div>
               </div>
             </div>
             <!-- Project 2 -->
@@ -146,12 +190,12 @@
                 <img alt="The Sage Pavilion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/insane-asylum.jpg"/>
               </div>
               <div class="order-2 lg:order-1 lg:text-right flex flex-col lg:items-end">
-                <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-4 text-sage-gray">Institutional • West Virginia, USA</h4>
-                <h3 class="text-3xl font-serif font-bold mb-6 text-sage-gray">Allegheny Lunatic Asylum of 1864</h3>
-                <p class="text-lg leading-relaxed mb-8 text-sage-gray/80">
+                <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">Institutional • West Virginia, USA</h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 text-ink">Allegheny Lunatic Asylum of 1864</h3>
+                <p class="text-lg leading-relaxed mb-8 text-ink/80">
                   I designed the Trans‑Allegheny Lunatic Asylum of 1864 to combine structured, therapeutic spaces with architectural grandeur. <br>Its radial wings and expansive corridors promote light, ventilation, and order, creating a sense of calm while subtly reflecting the imposing, somber reality of confinement.                
                 </p>
-                <div class="w-12 h-1 bg-primary rounded-full"></div>
+                <div class="w-12 h-1 bg-brand rounded-full"></div>
               </div>
             </div>
             <!-- Project 3 -->
@@ -160,11 +204,11 @@
                 <img alt="Desert Monolith" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/anti-homeless-bench.jpg"/>
               </div>
               <div class="order-2 lg:order-2">
-                <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-4 text-sage-gray">Urban Furniture • Cebu, Philippines</h4>
-                <h3 class="text-3xl font-serif font-bold mb-6 text-sage-gray">Triple Arm Anti-Homeless Bench</h3>
-                <p class="text-lg leading-relaxed mb-8 text-sage-gray/80">
+                <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">Urban Furniture • Cebu, Philippines</h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 text-ink">Triple Arm Anti-Homeless Bench</h3>
+                <p class="text-lg leading-relaxed mb-8 text-ink/80">
                   I designed the Vigilant Urban Bench to champion daytime relaxation while preventing nighttime lounging. The strategically placed central armrest ensures that no one can stretch out for a nap, keeping the bench upright, tidy, and socially “responsible.”                </p>
-                <div class="w-12 h-1 bg-primary rounded-full"></div>
+                <div class="w-12 h-1 bg-brand rounded-full"></div>
               </div>
             </div>
           </div>
@@ -175,38 +219,38 @@
       <section class="px-6 lg:px-20 max-w-7xl mx-auto py-4" id="contact">
         <div class="grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 class="text-4xl font-serif font-bold mb-8 text-sage-gray">DO NOT  <span class="text-primary italic">EVER</span> CONTACT ME NEVER EVER.</h2>
+            <h2 class="text-4xl font-serif font-bold mb-8 text-ink">DO NOT  <span class="text-brand italic">EVER</span> CONTACT ME NEVER EVER.</h2>
             <div class="space-y-8">
               <!-- Contact Info -->
               <div class="flex items-center gap-6">
-                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-brand">
                   <span class="material-symbols-outlined">mail</span>
                 </div>
                 <div>
-                  <p class="text-xs uppercase tracking-widest font-bold text-sage-gray/60">Email</p>
-                  <p class="text-lg text-sage-gray">arki.ronasilva@gmail.com</p>
+                  <p class="text-xs uppercase tracking-widest font-bold text-ink/60">Email</p>
+                  <p class="text-lg text-ink">arki.ronasilva@gmail.com</p>
                 </div>
               </div>
               <div class="flex items-center gap-6">
-                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-brand">
                   <span class="material-symbols-outlined">location_on</span>
                 </div>
                 <div>
-                  <p class="text-xs uppercase tracking-widest font-bold text-sage-gray/60">Location</p>
-                  <p class="text-lg text-sage-gray">Cebu (Casa Chamoi), Philippines</p>
+                  <p class="text-xs uppercase tracking-widest font-bold text-ink/60">Location</p>
+                  <p class="text-lg text-ink">Cebu (Casa Chamoi), Philippines</p>
                 </div>
               </div>
               <!-- Social Links -->
               <div class="mt-4">
-                <p class="font-bold mb-6 uppercase text-xs tracking-widest text-sage-gray/60">Do NOT follow me on these socials.</p>
+                <p class="font-bold mb-6 uppercase text-xs tracking-widest text-ink/60">Do NOT follow me on these socials.</p>
                 <div class="flex gap-4">
-                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-warm-accent/30 text-sage-gray hover:bg-primary hover:text-white" href="#">
+                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-ink/30 text-ink hover:bg-brand hover:text-white dark:bg-canvas/10 duration-300" href="#">
                   <span class="material-symbols-outlined">photo_camera</span>
                   </a>
-                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-warm-accent/30 text-sage-gray hover:bg-primary hover:text-white" href="#">
+                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-ink/30 text-ink hover:bg-brand hover:text-white dark:bg-canvas/10 duration-300" href="#">
                   <span class="material-symbols-outlined">work</span>
                   </a>
-                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-warm-accent/30 text-sage-gray hover:bg-primary hover:text-white" href="#">
+                  <a class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-ink/30 text-ink hover:bg-brand hover:text-white dark:bg-canvas/10 duration-300" href="#">
                   <span class="material-symbols-outlined">share</span>
                   </a>
                 </div>
@@ -214,24 +258,24 @@
             </div>
           </div>
           <div>
-            <form class="bg-white/50 backdrop-blur-sm p-10 rounded-2xl shadow-sm space-y-6 border border-primary/10 mt-4">
+            <form class="bg-white/50 backdrop-blur-sm p-10 rounded-2xl shadow-sm space-y-6 border border-brand/10 mt-4 transition-colors duration-300">
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                  <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">First Name</label>
-                  <input class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" type="text" value="Rona Mae"/>
+                  <label class="text-xs font-bold uppercase tracking-wider text-ink/70">First Name</label>
+                  <input class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300" type="text" value="Rona Mae"/>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Last Name</label>
-                  <input class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" type="text" value="Silba"/>
+                  <label class="text-xs font-bold uppercase tracking-wider text-ink/70">Last Name</label>
+                  <input class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300" type="text" value="Silba"/>
                 </div>
               </div>
               <div class="flex flex-col gap-1">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Email Address</label>
-                <input class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" type="email" value="arki.ronamae@hotmail.com"/>
+                <label class="text-xs font-bold uppercase tracking-wider text-ink/70">Email Address</label>
+                <input class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300" type="email" value="arki.ronamae@hotmail.com"/>
               </div>
               <div class="flex flex-col gap-1">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Project Type</label>
-                <select class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray">
+                <label class="text-xs font-bold uppercase tracking-wider text-ink/70">Project Type</label>
+                <select class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300">
                   <option>Biohazard Weaponry</option>
                   <option>Interior Design</option>
                   <option>Residential</option>
@@ -242,17 +286,56 @@
                 </select>
               </div>
               <div class="flex flex-col gap-1">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage-gray/70">Your Vision</label>
-                <textarea class="w-full bg-white dark:bg-background-dark border-sage-gray/20 rounded-lg focus:ring-1 focus:ring-primary p-3 text-sage-gray" rows="4" >Could you make me a 5 storey mansion? I have a total estimated budget of 2 million venezuelan bolivars which roughly translates to 20 philippine pesos.</textarea>
+                <label class="text-xs font-bold uppercase tracking-wider text-ink/70">Your Vision</label>
+                <textarea class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300" rows="4" >Could you make me a 5 storey mansion? I have a total estimated budget of 2 million venezuelan bolivars which roughly translates to 20 philippine pesos.</textarea>
               </div>
-              <button class="w-full bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg" type="submit">Send to my trash folder</button>
+              <button class="w-full bg-brand text-white py-4 rounded-lg font-bold hover:bg-brand/90 transition-all shadow-lg duration-300" type="submit">Send to my trash folder</button>
             </form>
           </div>
       </section>
     </main>
     <!-- Footer -->
-    <footer class="py-12 border-t border-primary/10 px-6 lg:px-20 text-center">
+    <footer class="py-12 border-t border-brand/10 px-6 lg:px-20 text-center">
     </footer>
     </div>
+    <script>
+      (function () {
+        const btn = document.getElementById("theme-toggle");
+        const icon = document.getElementById("theme-toggle-icon");
+        if (!btn || !icon) return;
+
+        const profilePhoto = document.getElementById("profile-photo");
+
+        function syncProfilePhoto() {
+          if (!profilePhoto) return;
+          const isDark = document.documentElement.classList.contains("dark");
+          const nextSrc = isDark
+            ? profilePhoto.getAttribute("data-dark-src")
+            : profilePhoto.getAttribute("data-light-src");
+          if (nextSrc && profilePhoto.getAttribute("src") !== nextSrc) {
+            profilePhoto.setAttribute("src", nextSrc);
+          }
+        }
+
+        function syncIcon() {
+          const isDark = document.documentElement.classList.contains("dark");
+          icon.textContent = isDark ? "light_mode" : "dark_mode";
+          btn.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light mode" : "Switch to dark mode"
+          );
+        }
+
+        btn.addEventListener("click", function () {
+          const isDark = document.documentElement.classList.toggle("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+          syncIcon();
+          syncProfilePhoto();
+        });
+
+        syncIcon();
+        syncProfilePhoto();
+      })();
+    </script>
   </body>
 </html>
