@@ -1,0 +1,71 @@
+.nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1.5px;
+    background: theme('colors.primary'); /* #6B8E23 */
+    transition: width 0.25s ease;
+    border-radius: 999px;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  #mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: #FFF8F0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  #mobile-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .menu-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  #mobile-overlay.open .menu-item:nth-child(1) { opacity:1; transform:none; transition-delay:0.10s; }
+  #mobile-overlay.open .menu-item:nth-child(2) { opacity:1; transform:none; transition-delay:0.18s; }
+  #mobile-overlay.open .menu-item:nth-child(3) { opacity:1; transform:none; transition-delay:0.26s; }
+  #mobile-overlay.open .menu-item:nth-child(4) { opacity:1; transform:none; transition-delay:0.34s; }
+  .overlay-link {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 700;
+    color: #4B5D4B;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+  .overlay-link:hover { color: #6B8E23; }
+  .overlay-link .link-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #6B8E23;
+    position: absolute;
+    top: 8px;
+    left: -28px;
+    letter-spacing: 0.05em;
+  }
+  .bar {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #4B5D4B;
+    border-radius: 999px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  #hamburger.open .bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  #hamburger.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  #hamburger.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
