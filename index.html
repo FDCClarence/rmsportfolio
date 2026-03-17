@@ -17,6 +17,10 @@
         --accent: 207 189 140;    /* #CFBD8C */
         --canvas: 244 243 238;    /* #F4F3EE */
         --canvas-dark: 41 46 22;  /* #292E16 (used as deep surface in light mode too) */
+
+        /* Background gradient accents (light) */
+        --bg-glow-1: 207 189 140; /* accent */
+        --bg-glow-2: 109 105 67;  /* brand */
       }
 
       .dark {
@@ -26,6 +30,18 @@
         --accent: 186 140 200;    /* dusty lavender (subtle, not neon) */
         --canvas: 58 36 46;       /* lifted plum-brown (key fix) */
         --canvas-dark: 44 26 34;  /* slightly deeper layer, but not black */
+
+        /* Background gradient accents (dark) */
+        --bg-glow-1: 214 140 82;  /* brand */
+        --bg-glow-2: 186 140 200; /* accent */
+      }
+
+      body {
+        background-image:
+          radial-gradient(900px circle at 15% -10%, rgb(var(--bg-glow-1) / 0.35), transparent 55%),
+          radial-gradient(700px circle at 85% 0%, rgb(var(--bg-glow-2) / 0.22), transparent 55%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
       }
     </style>
     <script id="tailwind-config">tailwind.config = {
@@ -120,7 +136,8 @@
     <main class="flex-grow pt-20">
       <!-- Navigation END -->
       <!-- Hero Section -->
-      <section class="relative min-h-[calc(100svh-5rem)] md:min-h-[60vh] flex items-center justify-center px-6 lg:px-20 bg-canvas dark:bg-canvas-dark transition-colors duration-300 pt-10 pb-12">
+      <section class="relative min-h-[calc(100svh-5rem)] md:min-h-[60vh] flex items-center justify-center px-6 lg:px-20 transition-colors duration-300 pt-10 pb-12">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-canvas/85 via-canvas/65 to-transparent dark:from-canvas-dark/70 dark:via-canvas-dark/45"></div>
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
           <!-- Profile Image -->
           <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 mb-10 md:mb-12 rounded-full flex items-center justify-center border-2 overflow-hidden shadow-sm bg-accent/10 border-accent/20 dark:bg-canvas/5 dark:border-accent/30 transition-colors duration-300">
@@ -181,50 +198,7 @@
             </div>
             <p class="max-w-xs italic font-serif text-ink/80">"Architecture should speak of its time and place, but yearn for timelessness."</p>
           </div>
-          <div class="space-y-32">
-            <!-- Project 1 -->
-            <div class="group grid lg:grid-cols-2 gap-12 items-center">
-              <div class="order-1 lg:order-1 overflow-hidden rounded-2xl aspect-[16/10]">
-                <img alt="Terracotta House" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/luneta_park_minecraft.jpeg"/>
-              </div>
-              <div class="order-2 lg:order-2">
-                <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">Recreational • Coordinates : X : 1105, Y : -2067</h4>
-                <h3 class="text-3xl font-serif font-bold mb-6 text-ink">Minecraft Luneta Park</h3>
-                <p class="text-lg leading-relaxed mb-8 text-ink/80">
-                  Luneta Park is a recreational landscape project that I designed to create an accessible and inviting public space for leisure, movement, and community interaction. 
-                  The design integrates organized pedestrian circulation, landscaped green spaces, and shaded seating areas to establish a balanced and functional environment for visitors. 
-                </p>
-                <div class="w-12 h-1 bg-brand rounded-full"></div>
-              </div>
-            </div>
-            <!-- Project 2 -->
-            <div class="group grid lg:grid-cols-2 gap-12 items-center">
-              <div class="order-1 lg:order-2 overflow-hidden rounded-2xl aspect-[16/10]">
-                <img alt="The Sage Pavilion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/insane-asylum.jpg"/>
-              </div>
-              <div class="order-2 lg:order-1 lg:text-right flex flex-col lg:items-end">
-                <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">Institutional • West Virginia, USA</h4>
-                <h3 class="text-3xl font-serif font-bold mb-6 text-ink">Allegheny Lunatic Asylum of 1864</h3>
-                <p class="text-lg leading-relaxed mb-8 text-ink/80">
-                  I designed the Trans‑Allegheny Lunatic Asylum of 1864 to combine structured, therapeutic spaces with architectural grandeur. <br>Its radial wings and expansive corridors promote light, ventilation, and order, creating a sense of calm while subtly reflecting the imposing, somber reality of confinement.                
-                </p>
-                <div class="w-12 h-1 bg-brand rounded-full"></div>
-              </div>
-            </div>
-            <!-- Project 3 -->
-            <div class="group grid lg:grid-cols-2 gap-12 items-center">
-              <div class="order-1 lg:order-1 overflow-hidden rounded-2xl aspect-[16/10]">
-                <img alt="Desert Monolith" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/anti-homeless-bench.jpg"/>
-              </div>
-              <div class="order-2 lg:order-2">
-                <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">Urban Furniture • Cebu, Philippines</h4>
-                <h3 class="text-3xl font-serif font-bold mb-6 text-ink">Triple Arm Anti-Homeless Bench</h3>
-                <p class="text-lg leading-relaxed mb-8 text-ink/80">
-                  I designed the Vigilant Urban Bench to champion daytime relaxation while preventing nighttime lounging. The strategically placed central armrest ensures that no one can stretch out for a nap, keeping the bench upright, tidy, and socially “responsible.”                </p>
-                <div class="w-12 h-1 bg-brand rounded-full"></div>
-              </div>
-            </div>
-          </div>
+          <div id="projects-list" class="space-y-32"></div>
         </div>
       </section>
       <!-- About Section -->
@@ -348,6 +322,61 @@
 
         syncIcon();
         syncProfilePhoto();
+      })();
+    </script>
+    <script>
+      (function () {
+        const container = document.getElementById("projects-list");
+        if (!container) return;
+
+        function escapeHtml(s) {
+          return String(s)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+        }
+
+        function render(projects) {
+          container.innerHTML = projects
+            .map((p, idx) => {
+              const reverse = idx % 2 === 1;
+              const imageOrder = reverse ? "order-1 lg:order-2" : "order-1 lg:order-1";
+              const textOrder = reverse
+                ? "order-2 lg:order-1 lg:text-right flex flex-col lg:items-end"
+                : "order-2 lg:order-2";
+
+              const description = escapeHtml(p.description || "").replaceAll("\n", "<br/>");
+
+              return `
+                <div class="group grid lg:grid-cols-2 gap-12 items-center">
+                  <div class="${imageOrder} overflow-hidden rounded-2xl aspect-[16/10]">
+                    <img alt="${escapeHtml(p.name || "Project image")}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${escapeHtml(p.image || "")}"/>
+                  </div>
+                  <div class="${textOrder}">
+                    <h4 class="text-brand font-bold uppercase tracking-widest text-xs mb-4 text-ink">${escapeHtml(p.address || "")}</h4>
+                    <h3 class="text-3xl font-serif font-bold mb-6 text-ink">${escapeHtml(p.name || "")}</h3>
+                    <p class="text-lg leading-relaxed mb-8 text-ink/80">${description}</p>
+                    <div class="w-12 h-1 bg-brand rounded-full"></div>
+                  </div>
+                </div>
+              `;
+            })
+            .join("");
+        }
+
+        fetch("./projects.json", { cache: "no-store" })
+          .then((r) => (r.ok ? r.json() : Promise.reject(new Error("Failed to load projects.json"))))
+          .then((data) => {
+            if (!Array.isArray(data)) throw new Error("projects.json must be an array");
+            render(data);
+          })
+          .catch((err) => {
+            console.error(err);
+            container.innerHTML =
+              '<p class="text-ink/70">Could not load projects.</p>';
+          });
       })();
     </script>
     <script>
