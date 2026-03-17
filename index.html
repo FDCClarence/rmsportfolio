@@ -13,14 +13,15 @@
       darkMode: "class",
       theme: {
           extend: {
-              colors: {
-                  "primary": "#6B8E23",
-                  "warm-accent": "#FFD8B1",
-                  "cool-accent": "#C5B4E3",
-                  "sage-gray": "#4B5D4B",
-                  "background-light": "#FFF8F0",
-                  "background-dark": "#1a1c1a",
-              },
+            colors: {
+                "primary": "#6D6943",        // olive-khaki → buttons, links, active nav
+                "warm-accent": "#42010F",    // deep burgundy → CTAs, bold highlights, hover states
+                "cool-accent": "#CFBD8C",    // parchment gold → secondary buttons, dividers, tags
+                "sage-gray": "#42010F",      // warm dark brown → all body text & headings
+                "background-light": "#F4F3EE", // warm off-white → page background
+                "background-dark": "#292E16",  // deep forest green → dark mode bg
+            },
+
               fontFamily: {
                   "display": ["Inter", "sans-serif"],
                   "serif": ["Playfair Display", "serif"]
@@ -47,12 +48,12 @@
         </div>
     
         <!-- Nav Links -->
-        <nav class="hidden md:flex items-center gap-8">
+        <!-- <nav class="hidden md:flex items-center gap-8">
           <a href="index.html" class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Original Palette</a>
           <a href="sample2.html" class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Dried Herb</a>
           <a href="sample3.html"   class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Wax Seal</a>
           <a href="sample4.html"   class="nav-link text-sm font-medium text-sage-gray/55 hover:text-sage-gray transition-colors duration-200">Dusty Linen</a>
-        </nav>
+        </nav> -->
     
         <!-- Contact Button -->
         <button
@@ -72,7 +73,7 @@
           <!-- Profile Image -->
           <div class="w-48 h-48 md:w-64 md:h-64 mb-12 rounded-full flex items-center justify-center border-2 overflow-hidden shadow-sm bg-cool-accent/10 border-cool-accent/20">
             <img
-              src="assets/profile.jpg"
+              src="assets/profile2.jpg"
               alt="Rona Marie S. Silva - Professional Portrait"
               class="w-full h-full object-cover"
               />
