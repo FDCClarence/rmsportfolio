@@ -50,7 +50,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        --wreath-pad: clamp(39px, 6.6vw, 58px);
+        --wreath-pad: clamp(45px, 7.7vw, 67px);
       }
       .profile-wreath::before {
         content: "";
@@ -63,7 +63,7 @@
         pointer-events: none;
         z-index: 0;
         transform: translate(-50%, -50%);
-        background: url("assets/t-light-new.png") 50% 50% / contain no-repeat;
+        background: url("assets/t-light-new.png") 40% 50% / contain no-repeat;
       }
       .dark .profile-wreath::before {
         background-image: url("assets/t-dark-new.png");
@@ -195,7 +195,7 @@
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-canvas/85 via-canvas/65 to-transparent dark:from-canvas-dark/70 dark:via-canvas-dark/45"></div>
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
           <!-- Profile Image -->
-          <div class="profile-wreath mb-10 md:mb-12">
+          <div class="profile-wreath -mt-4 mb-14 md:mb-16 lg:-mt-6 lg:mb-20">
             <div class="relative z-10 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center overflow-hidden bg-accent/10 shadow-sm border border-accent/20 ring-2 ring-brand/20 ring-offset-4 ring-offset-canvas dark:bg-canvas/5 dark:border-accent/30 dark:ring-brand/30 dark:ring-offset-canvas-dark transition-colors duration-300">
               <img
                 id="profile-photo"
