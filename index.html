@@ -71,6 +71,7 @@
       .jumpscare.open img {
         animation: jumpscare-pop 80ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
       }
+
       @keyframes jumpscare-pop {
         from { transform: scale(0.35); }
         to { transform: scale(1); }
@@ -198,11 +199,11 @@
     <main class="flex-grow pt-20">
       <!-- Navigation END -->
       <!-- Hero Section -->
-      <section class="relative min-h-[calc(100svh-5rem)] md:min-h-[60vh] flex items-center justify-center px-6 lg:px-20 transition-colors duration-300 pt-10 pb-12">
+      <section class="relative min-h-[55vh] md:min-h-[56vh] lg:min-h-[52vh] flex items-center justify-center px-6 lg:px-20 transition-colors duration-300 pt-10 lg:pt-16 pb-12 md:pb-8 lg:pb-10">
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-canvas/85 via-canvas/65 to-transparent dark:from-canvas-dark/70 dark:via-canvas-dark/45"></div>
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
           <!-- Profile Image -->
-          <div class="mb-14 md:mb-16 lg:mb-20">
+          <div class="mb-8 mt-14 md:mb-10 lg:mb-12 md:mt-7 lg:mt-9 hero-profile-pic">
             <div class="relative z-10 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center overflow-hidden bg-accent/10 shadow-sm border border-accent/20 ring-2 ring-brand/20 ring-offset-4 ring-offset-canvas dark:bg-canvas/5 dark:border-accent/30 dark:ring-brand/30 dark:ring-offset-canvas-dark transition-colors duration-300">
               <img
                 id="profile-photo"
@@ -216,7 +217,7 @@
           </div>
           <!-- Text Content -->
           <div class="max-w-2xl px-4">
-            <h4 class="text-lg sm:text-xl lg:text-2xl font-serif font-bold mb-6 text-ink">
+            <h4 class="text-base sm:text-lg lg:text-xl font-serif font-bold mb-5 text-ink">
               Rona Mae, a knight of unyielding resolve, knelt beneath the banner of Gortington, First of His Name, and swore fealty with steel in heart and fire in voice. She pledged her blade to his cause, vowing to stand unwavering in his war against the great and terrible Garbanzo Beans that threatened the realm.    
             </h4>
             <div class="w-12 h-1 bg-brand mx-auto rounded-full"></div>
@@ -339,7 +340,7 @@
               </div>
               <div class="flex flex-col gap-1">
                 <label class="text-xs font-bold uppercase tracking-wider text-ink/70">Your Vision</label>
-                <textarea class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300" rows="4" >Could you make me a 5 storey mansion? I have a total estimated budget of 2 million venezuelan bolivars which roughly translates to 20 philippine pesos.</textarea>
+                <textarea class="w-full bg-white dark:bg-canvas-dark border-ink/20 rounded-lg focus:ring-1 focus:ring-brand p-3 text-ink transition-colors duration-300" rows="5" >Could you make me a 5 storey mansion?&#10;I have a total estimated budget of 2 million venezuelan bolivars which roughly translates to 20 philippine pesos.</textarea>
               </div>
               <button class="w-full bg-brand text-white py-4 rounded-lg font-bold hover:bg-brand/90 transition-all shadow-lg duration-300" type="submit">Send to my trash folder</button>
             </form>
